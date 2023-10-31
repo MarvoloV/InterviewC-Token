@@ -37,15 +37,24 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.hello = void 0;
+var routes_1 = require("./src/presentation/todos/routes");
 var hello = function (event) { return __awaiter(void 0, void 0, void 0, function () {
+    var todo;
     return __generator(this, function (_a) {
-        return [2 /*return*/, {
-                statusCode: 200,
-                body: JSON.stringify({
-                    message: "Go Serverless v3.0! Your function executed successfully!",
-                    input: event,
-                }, null, 2),
-            }];
+        switch (_a.label) {
+            case 0: return [4 /*yield*/, routes_1.TodoRoutes.routes.createTodo(JSON.parse(event.body || ""))];
+            case 1:
+                todo = _a.sent();
+                console.log("🚀 ~ file: commerce.ts:8 ~ todo:", todo);
+                return [2 /*return*/, {
+                        statusCode: 200,
+                        body: JSON.stringify({
+                            todo: todo,
+                            message: "Go Serverless v3.0! Your function executed successfully!",
+                            input: event,
+                        }, null, 2),
+                    }];
+        }
     });
 }); };
 exports.hello = hello;

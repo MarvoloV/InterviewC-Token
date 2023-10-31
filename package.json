@@ -5,6 +5,9 @@
   "scripts": {
     "dev": "npx serverless offline start"
   },
+  "prisma": {
+    "seed": "ts-node --transpile-only prisma/seed.ts"
+  },
   "devDependencies": {
     "@types/aws-lambda": "^8.10.101",
     "serverless": "^3.21.0",
