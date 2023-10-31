@@ -2,14 +2,14 @@ import {
   CreateCommerceDto,
   CommerceDatasource,
   CommerceEntity,
-  TodoRepository,
+  CommerceRepository,
 } from "../../domain";
 
-export class TodoRepositoryImpl implements TodoRepository {
+export class CommerceRepositoryImpl implements CommerceRepository {
   constructor(private readonly datasource: CommerceDatasource) {}
 
-  create(createTodoDto: CreateCommerceDto): Promise<CommerceEntity> {
-    return this.datasource.create(createTodoDto);
+  create(createCommerceDto: CreateCommerceDto): Promise<CommerceEntity> {
+    return this.datasource.create(createCommerceDto);
   }
 
   findById(id: string): Promise<CommerceEntity> {

@@ -1,12 +1,12 @@
 import { CommerceEntity } from "../../entities/commerce.entity";
-import { TodoRepository } from "../../repositories/commerce.repository";
+import { CommerceRepository } from "../../repositories/commerce.repository";
 
-export interface GetTodoUseCase {
+export interface GetCommerceUseCase {
   execute(id: string): Promise<CommerceEntity>;
 }
 
-export class GetTodo implements GetTodoUseCase {
-  constructor(private readonly repository: TodoRepository) {}
+export class GetTodo implements GetCommerceUseCase {
+  constructor(private readonly repository: CommerceRepository) {}
 
   execute(id: string): Promise<CommerceEntity> {
     return this.repository.findById(id);

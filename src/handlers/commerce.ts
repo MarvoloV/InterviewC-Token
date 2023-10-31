@@ -1,17 +1,18 @@
 import { APIGatewayProxyEvent, APIGatewayProxyResult } from "aws-lambda";
-import { TodoRoutes } from "../presentation/todos/routes";
+import { CoomerceRoutes } from "../presentation/commerce/routes";
 
 export const hello = async (
   event: APIGatewayProxyEvent
 ): Promise<APIGatewayProxyResult> => {
-  const todo = await TodoRoutes.routes.createTodo(JSON.parse(event.body || ""));
-  console.log("🚀 ~ file: commerce.ts:8 ~ todo:", todo);
+  const commerce = await CoomerceRoutes.routes.createCommerce(
+    JSON.parse(event.body || "")
+  );
 
   return {
     statusCode: 200,
     body: JSON.stringify(
       {
-        todo,
+        commerce: commerce,
         message: "Go Serverless v3.0! Your function executed successfully!",
         input: event,
       },
