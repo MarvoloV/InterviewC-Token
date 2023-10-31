@@ -5,7 +5,7 @@ export interface GetCommerceUseCase {
   execute(id: string): Promise<CommerceEntity>;
 }
 
-export class GetTodo implements GetCommerceUseCase {
+export class GetCommerce implements GetCommerceUseCase {
   constructor(private readonly repository: CommerceRepository) {}
 
   execute(id: string): Promise<CommerceEntity> {
