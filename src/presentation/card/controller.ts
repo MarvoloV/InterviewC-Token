@@ -17,7 +17,9 @@ export class CardController {
   public createCard = async (body: any) => {
     const [error, createCardDto] = CreateCardDto.create(body);
 
-    if (error) throw { error };
+    if (error) {
+      throw error;
+    }
 
     const commerce = await this.cardRepository.create(createCardDto!);
     return commerce;

@@ -35,7 +35,6 @@ export const findCardByToken = async (
 
   try {
     const card = await CardRoutes.routes.getCardById(id);
-    console.log("🚀 ~ file: card.ts:39 ~ card:", card);
     return {
       statusCode: 200,
       body: JSON.stringify(

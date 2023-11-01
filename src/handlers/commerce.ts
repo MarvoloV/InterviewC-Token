@@ -7,7 +7,6 @@ export const create = async (
   const commerce = await CoomerceRoutes.routes.createCommerce(
     JSON.parse(event.body || "")
   );
-  console.log("🚀 ~ file: commerce.ts:10 ~ commerce:", commerce);
 
   return {
     statusCode: 200,
