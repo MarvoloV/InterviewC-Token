@@ -9,12 +9,23 @@ provider:
 
 functions:
   hello:
-    handler: handler.hello
+    handler: src/handlers/commerce.create
     events:
       - httpApi:
           path: /
           method: post
-
+  createToken:
+    handler: src/handlers/card.createCard
+    events:
+      - httpApi:
+          path: /card
+          method: post
+  findCardbyToken:
+    handler: src/handlers/card.findCardByToken
+    events:
+      - httpApi:
+          path: /card/{id}
+          method: get
 plugins:
   - serverless-plugin-typescript
   - serverless-offline

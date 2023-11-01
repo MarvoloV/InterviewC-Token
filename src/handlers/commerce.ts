@@ -1,12 +1,13 @@
 import { APIGatewayProxyEvent, APIGatewayProxyResult } from "aws-lambda";
 import { CoomerceRoutes } from "../presentation/commerce/routes";
 
-export const hello = async (
+export const create = async (
   event: APIGatewayProxyEvent
 ): Promise<APIGatewayProxyResult> => {
   const commerce = await CoomerceRoutes.routes.createCommerce(
     JSON.parse(event.body || "")
   );
+  console.log("🚀 ~ file: commerce.ts:10 ~ commerce:", commerce);
 
   return {
     statusCode: 200,

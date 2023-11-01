@@ -37,23 +37,21 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.hello = void 0;
-var routes_1 = require("./src/presentation/commerce/routes");
 var hello = function (event) { return __awaiter(void 0, void 0, void 0, function () {
-    var commerce;
     return __generator(this, function (_a) {
-        switch (_a.label) {
-            case 0: return [4 /*yield*/, routes_1.CoomerceRoutes.routes.createCommerce(JSON.parse(event.body || ""))];
-            case 1:
-                commerce = _a.sent();
-                return [2 /*return*/, {
-                        statusCode: 200,
-                        body: JSON.stringify({
-                            commerce: commerce,
-                            message: "Go Serverless v3.0! Your function executed successfully!",
-                            input: event,
-                        }, null, 2),
-                    }];
-        }
+        console.log("🚀 ~ file: handler.ts:7 ~ event:", event);
+        // const commerce = await CoomerceRoutes.routes.createCommerce(
+        //   JSON.parse(event.body || "")
+        // );
+        // console.log("🚀 ~ file: handler.ts:10 ~ commerce:", commerce);
+        return [2 /*return*/, {
+                statusCode: 200,
+                body: JSON.stringify({
+                    // commerce: commerce,
+                    message: "Go Serverless v3.0! Your function executed successfully!",
+                    input: event,
+                }, null, 2),
+            }];
     });
 }); };
 exports.hello = hello;
