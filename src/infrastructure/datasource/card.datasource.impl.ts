@@ -1,17 +1,27 @@
 import { prisma } from "../../data/postgres";
 import { clientRedis } from "../../data/redis";
 import { CardDatasource, CardEntity, CreateCardDto } from "../../domain";
+import { generateToken } from "../../utils/generateToken";
 
 export class CardDatasourceImpl implements CardDatasource {
-  async create(createCardDto: CreateCardDto): Promise<CardEntity> {
+  async create(createCardDto: CreateCardDto): Promise<string> {
     clientRedis
       .on("error", (err) => console.log("Redis Client Error", err))
       .connect();
-    await clientRedis.set("1234", JSON.stringify(createCardDto), {
+    let isExistToken = true;
+    let token: string = "";
+    while (isExistToken) {
+      token = generateToken();
+      const cardData = await clientRedis.get(token);
+      if (!cardData) {
+        isExistToken = false;
+      }
+    }
+    await clientRedis.set(token, JSON.stringify(createCardDto), {
       EX: 60 * 1,
     });
 
-    return CardEntity.fromObject(createCardDto);
+    return token;
   }
 
   async findById(id: string): Promise<CardEntity> {

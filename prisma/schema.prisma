@@ -13,4 +13,5 @@ datasource db {
 model commerce {
   id   Int    @id @default(autoincrement())
   name String @db.VarChar
+  pkey String @db.VarChar
 }

@@ -8,7 +8,7 @@ import {
 export class CardRepositoryImpl implements CardRepository {
   constructor(private readonly datasource: CardDatasource) {}
 
-  create(createCardDto: CreateCardDto): Promise<CardEntity> {
+  create(createCardDto: CreateCardDto): Promise<string> {
     return this.datasource.create(createCardDto);
   }
 

@@ -10,7 +10,7 @@ export class CommerceController {
       const commerce = await this.commerceRepository.findById(id);
       return commerce;
     } catch (error) {
-      return error;
+      throw error;
     }
   };
 

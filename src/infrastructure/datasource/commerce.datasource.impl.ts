@@ -16,7 +16,7 @@ export class CommerceDatasourceImpl implements CommerceDatasource {
 
   async findById(id: string): Promise<CommerceEntity> {
     const commerce = await prisma.commerce.findFirst({
-      where: { id: Number(id) },
+      where: { pkey: id },
     });
 
     if (!commerce) throw `Commerce with id ${id} not found`;
