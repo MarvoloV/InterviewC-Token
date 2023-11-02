@@ -1,4 +1,4 @@
-import { CommerceController } from "./controller.ddd";
+import { CommerceController } from "./controller";
 import { CommerceDatasourceImpl } from "../../infrastructure/datasource/commerce.datasource.impl";
 import { CommerceRepositoryImpl } from "../../infrastructure/repositories/commerce.repository.impl";
 import { CardDatasourceImpl } from "../../infrastructure/datasource/card.datasource.impl";
