@@ -3,10 +3,8 @@
   "description": "This template demonstrates how to make a simple HTTP API with Node.js and Typescript running on AWS Lambda and API Gateway using the Serverless Framework v3",
   "version": "1.0.0",
   "scripts": {
-    "dev": "npx serverless offline start --reloadHandler",
-    "test": "jest",
-    "test:watch": "jest --watch",
-    "test:coverage": "jest --coverage"
+    "local": "npx serverless offline start --reloadHandler",
+    "test": "jest"
   },
   "prisma": {
     "seed": "ts-node --transpile-only prisma/seed.ts"

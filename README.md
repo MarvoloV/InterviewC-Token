@@ -1,45 +1,87 @@
-<!--
-title: 'AWS Simple HTTP Endpoint example in NodeJS with Typescript'
-description: 'This template demonstrates how to make a simple HTTP API with Node.js and Typescript running on AWS Lambda and API Gateway using the Serverless Framework v3.'
-layout: Doc
-framework: v3
-platform: AWS
-language: nodeJS
-authorLink: 'https://github.com/serverless'
-authorName: 'Serverless, inc.'
-authorAvatar: 'https://avatars1.githubusercontent.com/u/13742415?s=200&v=4'
--->
+# Serverless Framework - Lambda + Mongo
 
-# Serverless Framework Node with Typescript HTTP API on AWS
+![](https://res.cloudinary.com/jam-trading/image/upload/v1696268381/aws.png)
 
-This template demonstrates how to make a simple HTTP API with Node.js and Typescript running on AWS Lambda and API Gateway using the Serverless Framework v3.
+# Tokenización de Tarjetas
 
-This template does not include any kind of persistence (database). For more advanced examples, check out the [serverless/examples repository](https://github.com/serverless/examples) which includes Typescript, Mongo, DynamoDB and other examples.
+#### Este proyecto consta de creacion de lambda functions para validación de tarjeta de crédito y generación de tokens único y obtener la información de la tarjeta a traves del token generado en otra lamda Functions. A continuación, se describen los componentes clave y los requisitos del sistema:
 
-## Setup
+- Generación de un Token
+- Consulta del comercio
+- Almacenamiento seguro
+- Tiempo de registro
 
-Run this command to initialize a new project in a new working directory.
+Para todo esto se utilizo Clean Architecture,Serveless, TypeScript , base de Datos PostgreSql , para la información CACHE Redis y test Unitarios Jest
+
+## 1. Clonar proyecto
+
+```
+git clone git@github.com:MarvoloV/InterviewC-Token.git
+```
+
+## 2. Instalar las dependencias
 
 ```
 npm install
 ```
 
-## Usage
-
-**Deploy**
+## 3. Clonar el archivo `.env.template` y renombrarlo a `.env`
 
 ```
-$ serverless deploy
+cp .env.template .env
 ```
 
-**Invoke the function locally.**
+## 4. Levantar la base de datos y redis
 
 ```
-serverless invoke local --function hello
+docker-compose up -d
 ```
 
-**Invoke the function**
+## 5. Ejecutar MIGRATE
 
 ```
-curl https://xxxxxxxxx.execute-api.us-east-1.amazonaws.com/
+  npx prisma migrate dev --name init
+```
+
+### Deploy Local
+
+Puede invocar su función localmente usando el siguiente comando:
+
+```bash
+npm run local
+```
+
+```bash
+
+
+Starting Offline at stage dev (us-east-1)
+
+endpoints:
+  POST - http://localhost:3000/api/token
+  GET  - http://localhost:3000/api/token/{token}
+
+POST - http://localhost:3000/api/token
+
+body:{
+   "card_number":"4557880821444944",
+    "expiration_month":"11",
+    "expiration_year":"2023",
+    "email":"jorge2ad0812@gmail.com",
+    "cvc":"1234"
+}
+header:{
+    Authorization: 'Bearer pk_test_9rP8oZ3piARWTerm'
+}
+----------------------------------------------------------
+GET  - http://localhost:3000/api/token/{token}
+header:{
+    Authorization: 'Bearer pk_test_9rP8oZ3piARWTerm'
+}
+
+```
+
+## Testing
+
+```bash
+npm run test
 ```

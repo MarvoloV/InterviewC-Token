@@ -12,13 +12,13 @@ functions:
     handler: src/handlers/card.createCard
     events:
       - httpApi:
-          path: /token
+          path: /api/token
           method: post
   findCardbyToken:
     handler: src/handlers/card.findCardByToken
     events:
       - httpApi:
-          path: /token/{id}
+          path: /api/token/{id}
           method: get
 plugins:
   - serverless-plugin-typescript

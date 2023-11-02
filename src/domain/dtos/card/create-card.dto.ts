@@ -23,7 +23,8 @@ export class CreateCardDto {
     } else {
       if (
         !validator.isNumeric(card_number) ||
-        !validator.isLength(card_number, { min: 16, max: 16 })
+        !validator.isLength(card_number, { min: 16, max: 16 }) ||
+        !validator.isCreditCard(card_number)
       ) {
         errors.card_number = ["Invalid card_number"];
       }
