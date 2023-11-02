@@ -1,6 +1,6 @@
 # Serverless Framework - Lambda + Mongo
 
-![](https://res.cloudinary.com/jam-trading/image/upload/v1696268381/aws.png)
+![](https://res.cloudinary.com/jam-trading/image/upload/v1698898570/aws_yrqysh.png)
 
 # Tokenización de Tarjetas
 
