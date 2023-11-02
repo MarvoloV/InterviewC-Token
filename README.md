@@ -1,15 +1,8 @@
-# Serverless Framework - Lambda + Mongo
-
 ![](https://res.cloudinary.com/jam-trading/image/upload/v1698898570/aws_yrqysh.png)
 
 # Tokenización de Tarjetas
 
-#### Este proyecto consta de creacion de lambda functions para validación de tarjeta de crédito y generación de tokens único y obtener la información de la tarjeta a traves del token generado en otra lamda Functions. A continuación, se describen los componentes clave y los requisitos del sistema:
-
-- Generación de un Token
-- Consulta del comercio
-- Almacenamiento seguro
-- Tiempo de registro
+#### Este proyecto consta de creacion de lambda functions para validación de tarjeta de crédito y generación de tokens único y obtener la información de la tarjeta a traves del token generado en otra lambda Functions.
 
 Para todo esto se utilizo Clean Architecture,Serveless, TypeScript , base de Datos PostgreSql , para la información CACHE Redis y test Unitarios Jest
 
