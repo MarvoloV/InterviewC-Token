@@ -2,7 +2,7 @@ import { CreateCardDto } from "../../../../src/domain";
 
 describe("create-card DTO ", () => {
   it("should create a valid instance of CreateCardDto with all required properties", () => {
-    const card_number = "1234567890123456";
+    const card_number = "4557880821444944";
     const cvv = "123";
     const expiration_month = "12";
     const expiration_year = "2025";

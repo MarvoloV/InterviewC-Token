@@ -43,6 +43,12 @@ docker-compose up -d
   npx prisma migrate dev --name init
 ```
 
+## 5. Ejecutar SEED
+
+```
+   npx prisma db seed
+```
+
 ### Deploy Local
 
 Puede invocar su función localmente usando el siguiente comando:
