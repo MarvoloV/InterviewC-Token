@@ -66,7 +66,7 @@ body:{
     "expiration_month":"11",
     "expiration_year":"2023",
     "email":"jorge2ad0812@gmail.com",
-    "cvc":"1234"
+    "cvv":"1234"
 }
 header:{
     Authorization: 'Bearer pk_test_9rP8oZ3piARWTerm'
