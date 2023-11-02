@@ -5,8 +5,8 @@ import { CardDatasourceImpl } from "../../infrastructure/datasource/card.datasou
 import { CardRepositoryImpl } from "../../infrastructure/repositories/card.repository.impl";
 import { CardController } from "../card/controller";
 
-export class CoomerceRoutes {
-  static get routes() {
+export class CoomerceControllerImpl {
+  static get Commerce() {
     const datasource = new CommerceDatasourceImpl();
     const commerceRepository = new CommerceRepositoryImpl(datasource);
     const commerceController = new CommerceController(commerceRepository);
@@ -14,8 +14,8 @@ export class CoomerceRoutes {
     return commerceController;
   }
 }
-export class CardRoutes {
-  static get routes() {
+export class CardControllerImpl {
+  static get Card() {
     const cardDatasource = new CardDatasourceImpl();
     const cardRepository = new CardRepositoryImpl(cardDatasource);
     const cardController = new CardController(cardRepository);

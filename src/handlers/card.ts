@@ -1,5 +1,8 @@
 import { APIGatewayProxyEvent, APIGatewayProxyResult } from "aws-lambda";
-import { CardRoutes, CoomerceRoutes } from "../presentation/commerce/routes";
+import {
+  CardControllerImpl,
+  CoomerceControllerImpl,
+} from "../presentation/commerce";
 import {
   formatJSONResponse,
   formatJSONResponseBadRequest,
@@ -9,27 +12,14 @@ export const createCard = async (
   event: APIGatewayProxyEvent
 ): Promise<APIGatewayProxyResult> => {
   try {
-    const token = await CardRoutes.routes.createCard(
+    const token = await CardControllerImpl.Card.createCard(
       JSON.parse(event.body || "")
     );
-    return {
-      statusCode: 200,
-      body: JSON.stringify(
-        {
-          token: token,
-        },
-        null,
-        2
-      ),
-    };
+    return formatJSONResponse({ token });
   } catch (error) {
-    return {
-      statusCode: 400,
-      body: JSON.stringify({
-        message: "Error found",
-        error,
-      }),
-    };
+    return formatJSONResponseBadRequest({
+      error,
+    });
   }
 };
 export const findCardByToken = async (
@@ -45,16 +35,18 @@ export const findCardByToken = async (
   const [bearer, token] = headers.authorization.split(" ");
   if (bearer !== "Bearer") {
     return formatJSONResponseBadRequest({
-      message: "Formato de Authorization incorrecto",
+      message: "format  Authorization incorrect",
     });
   }
   try {
-    const commerce = await CoomerceRoutes.routes.getCommerceById(token);
-    console.log("🚀 ~ file: card.ts:54 ~ commerce:", commerce);
-    const card = await CardRoutes.routes.getCardById(id);
-    return formatJSONResponse({ creditCard: card });
+    const commerce = await CoomerceControllerImpl.Commerce.getCommerceById(
+      token
+    );
+
+    const card = await CardControllerImpl.Card.getCardById(id);
+    delete card.cvv;
+    return formatJSONResponse(card);
   } catch (error) {
-    console.log("🚀 ~ file: card.ts:59 ~ error:", error);
     return formatJSONResponseBadRequest({
       message: "card not found",
     });

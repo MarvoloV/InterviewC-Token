@@ -18,9 +18,9 @@ export class CardDatasourceImpl implements CardDatasource {
       }
     }
     await clientRedis.set(token, JSON.stringify(createCardDto), {
-      EX: 60 * 1,
+      EX: 60 * 15,
     });
-
+    clientRedis.quit();
     return token;
   }
 
@@ -29,7 +29,7 @@ export class CardDatasourceImpl implements CardDatasource {
       .on("error", (err) => console.log("Redis Client Error", err))
       .connect();
     const card = await clientRedis.get(id);
-
+    clientRedis.quit();
     if (!card) throw `Commerce with id ${id} not found`;
     return CardEntity.fromObject(JSON.parse(card));
   }
