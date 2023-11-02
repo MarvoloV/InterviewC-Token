@@ -1,6 +1,5 @@
-org: marvolov
-app: typescript-http-api
-service: typescript-http-api
+app: culqui-lambda
+service: culqui-lambda
 frameworkVersion: "3"
 
 provider:

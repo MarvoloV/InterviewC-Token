@@ -12,7 +12,6 @@ export const createCard = async (
     const token = await CardRoutes.routes.createCard(
       JSON.parse(event.body || "")
     );
-    console.log("🚀 ~ file: card.ts:11 ~ card:", token);
     return {
       statusCode: 200,
       body: JSON.stringify(
